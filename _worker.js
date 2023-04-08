@@ -2,7 +2,7 @@
 
 // A list of allowed origins that can access our backend API
 const allowedOrigins = [
-  'https://rox.pages.dev',
+  "https://pizza-58c.pages.dev",
   "http://localhost:9000"
 ]
 
@@ -56,6 +56,6 @@ async function handleRequest(request) {
     modifiedResponse.headers.set('Access-Control-Allow-Origin', headers_Origin);
     return modifiedResponse;
   }
-  return new Response.redirect("https://rox.pages.dev")
+  return new Response.redirect("https://pizza-58c.pages.dev")
 }
 
