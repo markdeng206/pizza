@@ -23,8 +23,8 @@ const checkOrigin = request => {
   return foundOrigin ? foundOrigin : allowedOrigins[0]
 }
 
-
-const targetURL = 'https://api.openai.com';
+const apikey = `${APIKEY}`;
+const targetURL = `${URL}`;
 
 export default {
   async fetch(request, env) {
