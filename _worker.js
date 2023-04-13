@@ -44,13 +44,15 @@ async function handleRequest(request) {
     const url = new URL(request.url);
     const headers_Origin = request.headers.get("Access-Control-Allow-Origin") || "*"
     url.host = targetURL.replace(/^https?:\/\//, '');
-    const modifiedRequest = new Request(url.toString(), {
+    request.headers.set('Authorization', apikey);
+    let modifiedRequest = {
       headers: request.headers,
       method: request.method,
       body: request.body,
       redirect: 'follow'
-    });
-    const response = await fetch(modifiedRequest);
+    };  
+    
+    const response = await fetch(url.toString(), modifiedRequest);
     const modifiedResponse = new Response(response.body, response);
     // 添加允许跨域访问的响应头 allow cors
     modifiedResponse.headers.set('Access-Control-Allow-Origin', headers_Origin);
